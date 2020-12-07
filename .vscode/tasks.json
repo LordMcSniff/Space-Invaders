@@ -9,8 +9,12 @@
             "command": "g++",
             "args":[
                 "-g", "main.cpp",
-                "-o", "builds\\Space Invaders.exe"/*,
-                "-L", "${workspaceFolder}\\Dependencies\\glfw-3.3.2.bin.WIN32\\lib-vc2019"*/
+                "-o", "builds\\Space Invaders.exe"
+                // "-I", "${workspaceFolder}\\**",
+                // "-I", "${workspaceFolder}\\Dependencies\\glfw-3.3.2.bin.WIN32\\include",
+                // "-L", "${workspaceFolder}\\Dependencies\\glfw-3.3.2.bin.WIN32\\lib-vc2019",
+                // "-l", "glfw3"
+                // "-L", "${workspaceFolder}\\Dependencies\\glfw-3.3.2.bin.WIN32\\lib-vc2019"
             ],
             "group": {
                 "kind": "build",
