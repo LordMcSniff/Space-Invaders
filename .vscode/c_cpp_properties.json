@@ -3,13 +3,9 @@
         {
             "name": "Win32",
             "includePath": [
-                "C:\\Program Files (x86)\\Arduino\\tools\\**",
-                "C:\\Users\\Johann Schöps\\Documents\\Arduino\\libraries\\**",
-                "C:\\Program Files (x86)\\Arduino\\libraries\\**",
-                "C:\\Program Files (x86)\\Arduino\\hardware\\tools\\**",
-                "C:\\Program Files (x86)\\Arduino\\hardware\\arduino\\avr\\**",
                 "${workspaceFolder}/**",
-                "${workspaceFolder}\\Dependencies"
+                "${workspaceFolder}",
+                "${workspaceFolder}\\Dependencies\\"
             ],
             "defines": [
                 "_DEBUG",
@@ -20,10 +16,7 @@
             "compilerPath": "D:\\programme\\MinGW\\bin\\gcc.exe",
             "cStandard": "gnu17",
             "cppStandard": "gnu++14",
-            "intelliSenseMode": "gcc-x86",
-            "forcedInclude": [
-                "C:\\Program Files (x86)\\Arduino\\hardware\\arduino\\avr\\cores\\arduino\\Arduino.h"
-            ]
+            "intelliSenseMode": "gcc-x86"
         }
     ],
     "version": 4

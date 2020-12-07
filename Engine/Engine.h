@@ -3,6 +3,7 @@
 
 
 #include "GLFW/glfw3.h"
+#pragma comment(lib, "opengl32.lib")
 
 #include <iostream>
 using namespace std;
@@ -10,7 +11,7 @@ using namespace std;
 class Engine
 {
 private:
-    /* data */
+    static GLFWwindow* window;
 public:
     static int SCREEN_WIDTH;
     static int SCREEN_HEIGHT;
@@ -18,13 +19,10 @@ public:
     Engine(/* args */);
     ~Engine();
 
-    bool Initialize(char* windowTitle);
+    bool Initialize(char* windowTitle,int width,int height);
+
+    void Update();
+    void Render();
 };
-
-
-
-
-
-
 
 #endif
