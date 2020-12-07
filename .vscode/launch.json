@@ -13,7 +13,7 @@
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}",
             "environment": [],
-            "externalConsole": false,
+            "externalConsole": true,
             "MIMode": "gdb",
             "miDebuggerPath": "D:\\programme\\MinGW\\bin\\gdb.exe",
             "preLaunchTask":"Build_Space_Inv",
