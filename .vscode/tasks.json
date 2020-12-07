@@ -7,8 +7,11 @@
             "label": "Build_Space_Inv",
             "type": "shell",
             "command": "g++",
-            "args":["-g", "main.cpp", 
-                    "-o", "builds\\Space Invaders.exe"],
+            "args":[
+                "-g", "main.cpp",
+                "-o", "builds\\Space Invaders.exe"/*,
+                "-L", "${workspaceFolder}\\Dependencies\\glfw-3.3.2.bin.WIN32\\lib-vc2019"*/
+            ],
             "group": {
                 "kind": "build",
                 "isDefault": true
