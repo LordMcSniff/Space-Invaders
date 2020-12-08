@@ -19,7 +19,7 @@ public:
     Engine(/* args */);
     ~Engine();
 
-    bool Initialize(char* windowTitle,int width,int height);
+    bool Initialize(char* windowTitle);
 
     void Update();
     void Render();

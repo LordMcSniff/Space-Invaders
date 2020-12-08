@@ -12,7 +12,7 @@ Engine::~Engine()
 {
 }
 
-bool Engine::Initialize(char* windowTitle,int width = SCREEN_WIDTH,int height = SCREEN_HEIGHT)
+bool Engine::Initialize(char* windowTitle)
 {
     if (!glfwInit())
     {
@@ -20,7 +20,7 @@ bool Engine::Initialize(char* windowTitle,int width = SCREEN_WIDTH,int height = 
         return false;
     }
 
-    window = glfwCreateWindow(width,height,windowTitle, NULL,NULL);
+    window = glfwCreateWindow(SCREEN_WIDTH,SCREEN_HEIGHT,windowTitle, NULL,NULL);
     if (window == NULL)
     {
         cout << "Eroor creating window" << endl;
@@ -34,8 +34,8 @@ bool Engine::Initialize(char* windowTitle,int width = SCREEN_WIDTH,int height = 
     glfwSwapInterval(1);
 
     const GLFWvidmode* mode = glfwGetVideoMode(glfwGetPrimaryMonitor());
-    int xPos = (mode->width - width)/2;
-    int yPos = (mode->height - height)/2;
+    int xPos = (mode->width - SCREEN_WIDTH)/2;
+    int yPos = (mode->height - SCREEN_HEIGHT)/2;
     glfwSetWindowPos(window, xPos, yPos);
 
     //GL Setup
