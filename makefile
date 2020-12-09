@@ -1,24 +1,41 @@
-main: Engine.o main.o
-	g++ -g main.o Engine.o -o builds\\"Space Invaders".exe
+OUT = builds/executables
+CC = g++
+ODIR = builds/"obj files"
+SDIR = src
+INCDIR = -IDependencies/include
+LIBDIR = -LDependencies/lib -LDependencies/lib/GLFW
+LIBS = -lglfw3 -lgdi32
 
+_OBJS = main.o Engine.o Sprite.o \
+        Texture.o
+OBJS = $(patsubst %,$(ODIR)/%,$(_OBJS))
 
+# clean:
+#     rm -f $(ODIR)/*.o $(OUT)
 
-main.o: main.cpp main.h
-	g++ -c main.cpp
+# test:
+#     echo $(OBJS)
 
-Engine.o: Engine.cpp Engine.h
-	g++ -c Engine.cpp
+game: Engine.o main.o
+	g++ -Wall -g $(OBJS) -o $(OUT)/"Space Invaders".exe $(LIBDIR) $(LIBS)
+# g++ -Wall -g $(OBJS) -o $(OUT)/"Space Invaders".exe Dependencies/lib/libglfw3.lib -lgdi32
+#-lopengl32
 
-Texture.o: Texture.cpp
-	g++ -c Texture.cpp
+############################################ OBJ Files #####################################################
+main.o: Engine.o $(SDIR)/main.cpp $(SDIR)/main.h
+	g++ -c $(INCDIR) $(SDIR)/main.cpp -o $(ODIR)/main.o
 
-Sprite.o: Sprite.cpp
-	g++ -c Sprite.cpp
+#--------------Engine--------------
+ENDIR = $(SDIR)/Engine
+Engine.o: Graphics $(ENDIR)/Engine.cpp $(ENDIR)/Engine.h
+	g++ -c $(INCDIR) $(SDIR)/Engine/Engine.cpp -o $(ODIR)/Engine.o
 
-                "-o", "builds\\Space Invaders.exe"
-                // "-I", "${workspaceFolder}\\**",
-                // "-I", "${workspaceFolder}\\Dependencies\\glfw-3.3.2.bin.WIN32\\include",
-                // "-L", "${workspaceFolder}\\Dependencies\\glfw-3.3.2.bin.WIN32\\lib-vc2019",
-                // "-l", "glfw3"
-                // "-L", "${workspaceFolder}\\Dependencies\\glfw-3.3.2.bin.WIN32\\lib-vc2019"
-            ],
+#Engine -> Graphics
+GRDIR = $(ENDIR)/Graphics
+Graphics: Sprite.o
+
+Sprite.o: Texture.o $(GRDIR)/Sprite.cpp $(GRDIR)/Sprite.h
+	g++ -c $(INCDIR) $(GRDIR)/Sprite.cpp -o $(ODIR)/Sprite.o
+#Engine -> Graphics -> Sprite
+Texture.o: $(GRDIR)/Texture.cpp $(GRDIR)/Texture.h
+	g++ -c $(INCDIR) $(GRDIR)/Texture.cpp -o $(ODIR)/Texture.o
